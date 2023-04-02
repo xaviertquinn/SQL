@@ -1,0 +1,37 @@
+--create a store database
+
+CREATE TABLE inventory (id INTEGER PRIMARY KEY, name TEXT, price NUMERIC, quantity INTEGER, rating INTEGER);
+
+INSERT INTO inventory VALUES (1, "Worm Toy", 10.99, 28, 3.28);
+INSERT INTO inventory VALUES (2, "Catnip Pillow", 8.99, 27, 4.98);
+INSERT INTO inventory VALUES (3, "Squeaking Mouse Toy", 11.99, 31, 5);
+INSERT INTO inventory VALUES (4, "Bell Ball Toys", 7.99, 12, 1.76);
+INSERT INTO inventory VALUES (5, "Laser Toy", 19.99, 33, 2.97);
+INSERT INTO inventory VALUES (6, "Ribbon Toy", 10.99, 18, 5);
+INSERT INTO inventory VALUES (7, "Cat Blanket", 17.99, 36, 4.06);
+INSERT INTO inventory VALUES (8, "Catnip Mouse", 13.99, 16, 3.78);
+INSERT INTO inventory VALUES (9, "Cat Tunnel", 8.99, 42, 4.18);
+INSERT INTO inventory VALUES (10, "Cat Tent", 14.99, 44, 4.56);
+INSERT INTO inventory VALUES (11, "Catnip Animals", 15.99, 38, 4.28);
+INSERT INTO inventory VALUES (12, "Cat Bed", 13.99, 10, 5);
+INSERT INTO inventory VALUES (13, "Window Bed", 10.99, 31, 3.14);
+INSERT INTO inventory VALUES (14, "Assorted Catnip Toy", 7.99, 42, 5);
+INSERT INTO inventory VALUES (15, "Scratching Post, Open Base", 20.99, 31, 3.41);
+
+--display database ordered by price
+SELECT * FROM inventory 
+ORDER BY price ASC;
+
+--display database total quantity
+SELECT SUM(quantity) 
+FROM inventory;
+
+--display top rated items in database
+SELECT name, price, rating
+FROM inventory
+ORDER BY rating DESC
+LIMIT 10;
+
+--average price of items in database
+SELECT AVG(price)
+FROM inventory
