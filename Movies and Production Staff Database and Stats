@@ -1,0 +1,247 @@
+CREATE TABLE movies (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+	title TEXT,
+	director1_id INTEGER,
+	director2_id INTEGER,
+	producer1_id INTEGER,
+	producer2_id INTEGER,
+	producer3_id INTEGER
+);
+INSERT INTO movies (title, director1_id, producer1_id, producer2_id) 
+    VALUES ('Star Trek', 1, 1, 2);
+INSERT INTO movies (title, director1_id, producer1_id)
+    VALUES ('Coco', 2, 3);
+INSERT INTO movies (title, director1_id, producer1_id)
+    VALUES ('Turning Red', 3, 4);
+INSERT INTO movies (title, director1_id, producer1_id)
+    VALUES ('Soul', 4, 5);
+INSERT INTO movies (title, director1_id, producer1_id)
+    VALUES ('Luca', 5, 6);
+INSERT INTO movies (title, director1_id, producer1_id)
+    VALUES ('Onward', 6, 7);
+INSERT INTO movies (title, director1_id, producer1_id)
+    VALUES ('The Incredibles', 7, 8);
+INSERT INTO movies (title, director1_id, producer1_id)
+    VALUES ('Finding Nemo', 8, 9);
+INSERT INTO movies (title, director1_id, producer1_id)
+    VALUES ('Inside Out', 4, 10);
+INSERT INTO movies (title, director1_id, director2_id, producer1_id)
+    VALUES ('Brave', 9, 10, 11);
+INSERT INTO movies (title, director1_id, producer1_id)
+    VALUES ('Up', 4, 10);
+INSERT INTO movies (title, director1_id, producer1_id)
+    VALUES ('Finding Dory', 8, 4);
+INSERT INTO movies (title, director1_id, producer1_id)
+    VALUES ('Ratatouille', 7, 12);
+INSERT INTO movies (title, director1_id, producer1_id)
+    VALUES ('Monsters, Inc.', 4, 3);
+INSERT INTO movies (title, director1_id, producer1_id, producer2_id)
+    VALUES ('Incredibles 2', 7, 8, 13);
+INSERT INTO movies (title, director1_id, director2_id, producer1_id)
+    VALUES ('How to Train Your Dragon', 11, 12, 14);
+INSERT INTO movies (title, director1_id, producer1_id)
+    VALUES ('WALL-E', 8, 15);
+INSERT INTO movies (title, director1_id, director2_id, producer1_id, producer2_id, producer3_id)
+    VALUES ('Despicable Me', 13, 14, 16, 17, 18);
+INSERT INTO movies (title, director1_id, producer1_id, producer2_id)
+    VALUES ('Sing', 15, 16, 17);
+INSERT INTO movies (title, director1_id, producer1_id, producer2_id)
+    VALUES ('The Lorax', 13, 17, 16);
+
+
+CREATE TABLE directors (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	name TEXT,
+	movie1_id INTEGER,
+	movie2_id INTEGER,
+	movie3_id INTEGER,
+	movie4_id INTEGER
+);
+INSERT INTO directors (name, movie1_id) 
+    VALUES ('J. J. Abrams', 1);
+INSERT INTO directors (name, movie1_id) 
+    VALUES ('Lee Unkrich', 2);
+INSERT INTO directors (name, movie1_id) 
+    VALUES ('Domee Shi', 3);
+INSERT INTO directors (name, movie1_id, movie2_id, movie3_id, movie4_id) 
+    VALUES ('Pete Docter', 4, 9, 11, 14);
+INSERT INTO directors (name, movie1_id) 
+    VALUES ('Enrico Casarosa', 5);
+INSERT INTO directors (name, movie1_id) 
+    VALUES ('Dan Scanlon', 6);
+INSERT INTO directors (name, movie1_id, movie2_id, movie3_id) 
+    VALUES ('Brad Bird', 7, 13, 15);
+INSERT INTO directors (name, movie1_id, movie2_id, movie3_id) 
+    VALUES ('Andrew Stanton', 8, 12, 17);
+INSERT INTO directors (name, movie1_id) 
+    VALUES ('Mark Andrews', 10);
+INSERT INTO directors (name, movie1_id) 
+    VALUES ('Brenda Chapman', 10);
+INSERT INTO directors (name, movie1_id)
+    VALUES ('Chris Sanders', 16);
+INSERT INTO directors (name, movie1_id)
+    VALUES ('Dean DeBlois', 16);
+INSERT INTO directors (name, movie1_id, movie2_id)
+    VALUES ('Chris Renaud', 18, 20);
+INSERT INTO directors (name, movie1_id)
+    VALUES ('Pierre Coffin', 18);
+INSERT INTO directors (name, movie1_id)
+    VALUES ('Garth Jennings', 19);
+
+
+CREATE TABLE producers (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	name TEXT,
+	movie1_id INTEGER,
+	movie2_id INTEGER,
+	movie3_id INTEGER
+);
+INSERT INTO producers (name, movie1_id) 
+    VALUES ('J. J. Abrams', 1);
+INSERT INTO producers (name, movie1_id) 
+    VALUES ('Damon Lindelof', 1);
+INSERT INTO producers (name, movie1_id, movie2_id)  
+    VALUES ('Darla K. Anderson', 2, 14);
+INSERT INTO producers (name, movie1_id, movie2_id)  
+    VALUES ('Lindsey Collins', 3, 12);
+INSERT INTO producers (name, movie1_id)  
+    VALUES ('Dana Murray', 4);
+INSERT INTO producers (name, movie1_id) 
+    VALUES ('Andrea Warren', 5);
+INSERT INTO producers (name, movie1_id) 
+    VALUES ('Kori Rae', 6);
+INSERT INTO producers (name, movie1_id, movie2_id) 
+    VALUES ('John Walker', 7, 15);
+INSERT INTO producers (name, movie1_id) 
+    VALUES ('Graham Walters', 8);
+INSERT INTO producers (name, movie1_id, movie2_id) 
+    VALUES ('Jonas Rivera', 9, 11);
+INSERT INTO producers (name, movie1_id) 
+    VALUES ('Katherine Sarafian', 10);
+INSERT INTO producers (name, movie1_id) 
+    VALUES ('Brad Lewis', 13);
+INSERT INTO producers (name, movie1_id)
+    VALUES ('Nicole Paradis Grindle', 15);
+INSERT INTO producers (name, movie1_id)
+    VALUES ('Bonnie Arnold', 16);
+INSERT INTO producers (name, movie1_id)
+    VALUES ('Jim Morris', 17);
+INSERT INTO producers (name, movie1_id, movie2_id, movie3_id)
+    VALUES ('Chris Meledandri', 18, 19, 20);
+INSERT INTO producers (name, movie1_id, movie2_id, movie3_id)
+    VALUES ('Janet Healy', 18, 19, 20);
+INSERT INTO producers (name, movie1_id)
+    VALUES ('John Cohen', 18);
+
+
+CREATE TABLE writers (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	name TEXT,
+	movie1_id INTEGER,
+	movie2_id INTEGER,
+	movie3_id INTEGER
+);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Roberto Orci', 1);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Alex Kurtzman', 1);
+INSERT INTO writers (name, movie1_id)  
+    VALUES ('Adrian Molina', 2);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Matthew Aldrich', 2);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Julia Cho', 3);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Domee Shi', 3);
+INSERT INTO writers (name, movie1_id, movie2_id, movie3_id) 
+    VALUES ('Pete Docter', 4, 9, 11);
+INSERT INTO writers (name, movie1_id, movie2_id)  
+    VALUES ('Mike Jones', 4, 5);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Kemp Powers', 4);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Jesse Andrews', 5);
+INSERT INTO writers (name, movie1_id, movie2_id) 
+    VALUES ('Brad Bird', 7, 15);
+INSERT INTO writers (name, movie1_id, movie2_id, movie3_id) 
+    VALUES ('Andrew Stanton', 8, 12, 17);
+INSERT INTO writers (name, movie1_id, movie2_id) 
+    VALUES ('Bob Peterson', 8, 11);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('David Reynolds', 8);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Meg LeFauve', 9);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Josh Cooley', 9);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Mark Andrews', 10);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Steve Purcell', 10);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Brenda Chapman', 10);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Irene Mecchi', 10);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Victoria Strouse', 12);
+INSERT INTO writers (name, movie1_id) 
+    VALUES ('Brad Lewis', 13);
+INSERT INTO writers (name, movie1_id)
+    VALUES ('Daniel Gerson', 14);
+INSERT INTO writers (name, movie1_id)
+    VALUES ('Will Davies', 16);
+INSERT INTO writers (name, movie1_id)
+    VALUES ('Dean DeBlois', 16);
+INSERT INTO writers (name, movie1_id)
+    VALUES ('Chris Sanders', 16);
+INSERT INTO writers (name, movie1_id)
+    VALUES ('Jim Reardon', 17);
+INSERT INTO writers (name, movie1_id, movie2_id)
+    VALUES ('Cinco Paul', 18, 20);
+INSERT INTO writers (name, movie1_id, movie2_id)
+    VALUES ('Ken Daurio', 18, 20);
+INSERT INTO writers (name, movie1_id)
+    VALUES ('Garth Jennings', 19);
+
+
+--Joins three tables to find which director and producer worked on what movie, ordered by movies title
+SELECT movies.title AS movie, directors.name AS director, producers.name AS producer
+FROM movies
+    JOIN directors
+    ON movies.director1_id = directors.id
+    JOIN producers
+    ON movies.producer1_id = producers.id
+ORDER BY movies.title;
+
+-- Joins two tables to find which directors worked with which producers, ordered by directors name
+SELECT directors.name AS director, producers.name AS producer
+FROM movies
+    JOIN directors
+    ON movies.director1_id = directors.id
+    JOIN producers
+    ON movies.producer1_id = producers.id
+ORDER BY directors.name;
+
+--Joins three tables to count how many producers worked with which director, ordered by the number of producers worked with in descending order
+SELECT directors.name AS director, COUNT(producers.name) AS producers_worked_with
+FROM directors
+    JOIN movies
+    ON directors.id = movies.director1_id
+    JOIN producers
+    ON directors.id = producers.id
+GROUP BY directors.name
+ORDER BY producers_worked_with DESC;
+
+--Joins two tables to find out which writer worked on which movie, ordered by writers name
+SELECT writers.name AS writer, movies.title AS movie
+FROM writers
+    JOIN movies
+    ON writers.movie1_id = movies.id
+ORDER BY writers.name;
+
+--Select writer names between A and M, ordered by name
+SELECT name
+FROM writers
+WHERE name BETWEEN 'A%' AND 'M%'
+ORDER BY name;
+
+
