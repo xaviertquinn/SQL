@@ -95,7 +95,7 @@ AND order_id <> 'Order ID'
 
 --List all the products sold in Los Angeles in February, and include how many of each were sold.
 SELECT 
-DISTINCT Product
+Product
 , SUM(Quantity) AS amount
 
 FROM BIT_DB.FebSales
