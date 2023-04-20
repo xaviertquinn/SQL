@@ -1,0 +1,210 @@
+#I downloaded Spotify data from Kaggle and performed analytics using SQL.
+#I created a table for the Spotify data.
+
+CREATE TABLE BIT_DB.Spotifydata (
+  id integer PRIMARY KEY,
+  artist_name varchar NOT NULL,
+  track_name varchar NOT NULL,
+  track_id varchar NOT NULL,
+  popularity integer NOT NULL,
+  danceability decimal(4,3) NOT NULL,
+  energy decimal(4,3) NOT NULL,
+  song_key integer NOT NULL,
+  loudness decimal(5,3) NOT NULL,
+  song_mode integer NOT NULL,
+  speechiness decimal(5,4) NOT NULL,
+  acousticness decimal(6,5) NOT NULL,
+  instrumentalness decimal(8,7) NOT NULL,
+  liveness decimal(5,4) NOT NULL,
+  valence decimal(4,3) NOT NULL,
+  tempo decimal(6,3) NOT NULL,
+  duration_ms integer NOT NULL,
+  time_signature integer NOT NULL )
+
+#I uploaded the Spotify .csv into the table.
+
+#I answered the following questions using SQL.
+
+
+
+--Which artists have songs over the average popular rating, and which songs are they?
+SELECT
+artist_name
+,track_name
+,popularity
+
+FROM BIT_DB.Spotifydata
+
+WHERE popularity > (
+    SELECT AVG(popularity)
+    FROM BIT_DB.Spotifydata) 
+ORDER BY popularity DESC
+;
+
+
+--How many songs does each artist have over the average popularity rating?
+SELECT
+artist_name
+,popularity
+
+FROM BIT_DB.Spotifydata
+
+GROUP BY artist_name
+HAVING popularity > (avg(popularity))
+ORDER BY popularity DESC
+;
+
+
+--What is the danceability of the songs with popularity over 75?
+SELECT
+artist_name
+,track_name
+,popularity
+,danceability
+
+FROM BIT_DB.Spotifydata
+
+WHERE popularity >= 75
+ORDER BY popularity DESC
+;
+
+
+--How many songs were released by each artist?
+SELECT 
+artist_name
+, COUNT(track_name) AS songs
+
+FROM BIT_DB.Spotifydata
+
+GROUP BY artist_name
+ORDER BY songs DESC
+;
+
+
+--What song has the highest danceability rating? 0.0 low danceability, 1.0 high danceability
+SELECT
+track_name
+,MAX(danceability) AS danceability
+
+FROM BIT_DB.Spotifydata
+;
+
+
+--Which songs have a danceability and energy rating over 0.5? 0.0 low danceability and energy, 1.0 high danceability and energy
+SELECT
+track_name
+,danceability
+,energy
+
+FROM BIT_DB.Spotifydata
+
+WHERE danceability >=0.5
+AND energy >=0.5
+
+ORDER BY track_name ASC
+;
+
+
+--What artist has the most popular song?
+SELECT
+artist_name
+,MAX(popularity) AS song_popularity
+
+FROM BIT_DB.Spotifydata
+;
+
+
+--Which artists have the loudest songs and which songs are they? 0.0 low loudness, 1.0 high loudness
+SELECT
+artist_name
+,track_name
+,MAX(loudness) AS loudness
+
+FROM BIT_DB.Spotifydata
+;
+
+
+--What is the tempo category of each song? https://www.frontiersin.org/articles/10.3389/fpsyg.2018.02118/full; 0.0 low tempo, 1.0 high tempo
+SELECT
+track_name
+,artist_name
+,
+
+CASE
+  WHEN tempo >200 THEN "prestissimo"
+  WHEN tempo >168 THEN "presto"
+  WHEN tempo >120 THEN "allegro"
+  WHEN tempo >108 THEN "moderato"
+  WHEN tempo >76 THEN "andante"
+  WHEN tempo >66 THEN "adagio"
+  WHEN tempo >60 THEN "larghetto"
+  ELSE "largo"
+END AS "tempo_bpm"
+
+FROM BIT_DB.Spotifydata
+
+ORDER BY tempo_bpm ASC
+;
+
+
+--What is the popularity for songs with a time signature of 3?
+SELECT
+track_name
+,artist_name
+,popularity
+
+FROM BIT_DB.Spotifydata
+
+WHERE time_signature =3
+
+ORDER BY popularity DESC
+;
+
+
+--What are the top 5 popular songs with a time signature of 4?
+SELECT
+track_name
+,artist_name
+,popularity
+
+FROM BIT_DB.Spotifydata
+
+WHERE time_signature =4
+
+ORDER BY popularity DESC
+LIMIT 5
+;
+
+
+--What is the feeling conveyed in the song based on valence and energy? https://www.researchgate.net/figure/Emotional-classification-of-music-by-energy-and-valence-parameters-with-exemplary-songs_fig2_334084112; 0.0 low valence and energy, 1.0 high valence and energy
+SELECT
+track_name
+,artist_name
+,energy
+,valence
+,
+
+CASE
+  WHEN energy >=0.5 AND valence <=0.5 THEN "angry"
+  WHEN energy >=0.5 AND valence >=0.5 THEN "happy"
+  WHEN energy <=0.5 AND valence <=0.5 THEN "sad"
+  WHEN energy <=0.5 AND valence >=0.5 THEN "relaxed"
+END AS "song_feeling"
+
+FROM BIT_DB.Spotifydata
+ORDER BY song_feeling ASC
+;
+
+
+--Which songs are acoustic and high energy? 0.0 low acousticness and energy, 1.0 high acousticness and energy
+SELECT
+track_name
+,artist_name
+,acousticness
+,energy
+
+FROM BIT_DB.Spotifydata
+WHERE acousticness >=0.5
+AND energy >=0.5
+;
+
