@@ -1,0 +1,150 @@
+--I downloaded a SQLite file for the project and opened it in SQLite.
+--Then, I analyzed the data and answered the following questions.
+
+
+#1 Which artists are on which playlists?
+SELECT
+artists.Name AS "artist"
+,playlists.Name AS "playlist"
+
+FROM artists
+
+INNER JOIN playlists
+ON artists.ArtistId=playlists.PlaylistId
+
+ORDER BY artist ASC
+;
+
+
+#2 Which employees worked with which customers, and how much did the customers spend?
+SELECT
+customers.FirstName AS "customer_first_name"
+,customers.LastName AS "customer_last_name"
+,employees.FirstName AS "employee_first_name"
+,employees.LastName AS "employee_last_name"
+,SUM(invoices.total) AS "total_cost"
+
+FROM invoices
+
+INNER JOIN customers
+ON invoices.CustomerId=customers.CustomerId
+
+INNER JOIN employees
+ON customers.SupportRepId=employees.EmployeeId
+
+GROUP BY invoices.customerid
+;
+
+
+#3 Which tracks were sold the most, and for how much?
+SELECT
+tracks.name AS "song"
+,invoice_items.Quantity AS "amount"
+,SUM(Quantity)*invoice_items.UnitPrice AS "total"
+
+FROM tracks
+
+INNER JOIN invoice_items
+ON tracks.TrackId=invoice_items.TrackId
+
+GROUP BY song
+ORDER BY song
+;
+
+
+#4 What genres appear the most in each playlist?
+SELECT
+MAX(genres.Name) AS "genre"
+,playlists.Name AS "playlist"
+
+FROM genres
+
+INNER JOIN playlists
+ON genres.GenreId=playlists.PlaylistId
+
+GROUP BY playlist
+ORDER BY playlist
+;
+
+
+#5 Which employee had the most customers in each country?
+SELECT
+employees.FirstName AS "first_name"
+,employees.LastName AS "last_name"
+,customers.Country AS "country"
+,COUNT(customers.Country) AS "country_sales"
+
+FROM employees
+
+LEFT JOIN customers
+ON employees.EmployeeId=customers.SupportRepId
+
+GROUP BY first_name
+ORDER BY country_sales DESC
+;
+
+
+#6 Which tracks were sold the most in each country?
+SELECT
+customers.Country AS "country"
+,tracks.Name AS "track"
+
+FROM tracks
+
+INNER JOIN customers
+ON tracks.TrackId=customers.CustomerId
+
+GROUP BY country
+ORDER BY country
+;
+
+
+#7 What is the media type of each album?
+SELECT
+albums.Title AS "album"
+,artists.Name AS "artist"
+,media_types.Name AS "media"
+
+FROM albums
+
+LEFT JOIN media_types
+ON albums.AlbumId=media_types.MediaTypeId
+
+LEFT JOIN artists
+ON albums.ArtistId=artists.ArtistId
+
+ORDER BY media DESC
+;
+
+
+#8 When was each employee hired, and who is their supervisor?
+SELECT
+s.FirstName AS "employee_first"
+,s.LastName AS "employee_last"
+,e.HireDate AS "hired_date"
+,e.LastName AS "supervisor_last"
+
+FROM employees s
+
+LEFT JOIN employees e
+ON e.EmployeeId=s.ReportsTo
+
+ORDER BY supervisor_last
+;
+
+
+#9 Which employee sold which tracks?
+SELECT
+tracks.Name AS "track"
+,employees.FirstName AS "employee_first"
+,employees.LastName AS "employee_last"
+
+FROM tracks
+
+LEFT JOIN employees
+ON tracks.TrackId=employees.EmployeeId
+
+ORDER BY employee_first DESC
+;
+
+
