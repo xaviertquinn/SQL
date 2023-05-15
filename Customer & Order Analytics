@@ -23,7 +23,7 @@ AND Product = 'iPhone'
 ;
 
 
---How many of those were for an iPhone?
+--Which customers made orders in February?
 SELECT
 DISTINCT acctnum
 
