@@ -1,4 +1,4 @@
---create a store database
+--created a store database
 
 CREATE TABLE inventory (id INTEGER PRIMARY KEY, name TEXT, price NUMERIC, quantity INTEGER, rating INTEGER);
 
@@ -18,6 +18,7 @@ INSERT INTO inventory VALUES (13, "Window Bed", 10.99, 31, 3.14);
 INSERT INTO inventory VALUES (14, "Assorted Catnip Toy", 7.99, 42, 5);
 INSERT INTO inventory VALUES (15, "Scratching Post, Open Base", 20.99, 31, 3.41);
 
+
 --display database ordered by price
 SELECT * FROM inventory 
 ORDER BY price ASC;
@@ -34,4 +35,4 @@ LIMIT 10;
 
 --average price of items in database
 SELECT AVG(price)
-FROM inventory
+FROM inventory;
