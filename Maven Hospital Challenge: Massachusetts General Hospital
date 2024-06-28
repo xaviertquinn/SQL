@@ -1,0 +1,28 @@
+/*
+Maven Hospital Challenge is Maven Analytics current challenge. I play an Analytics Consultant for Massachusetts General Hospital. This challenge asked me to build a KPI dashboard so the hospital's stakeholders can understand the hospital's recent performance in key areas, and answer the following questions:
+
+    How many patients have been admitted or readmitted over time?
+    How long are patients staying in the hospital, on average?
+    How much is the average cost per visit?
+    How many procedures are covered by insurance?
+*/
+
+/*
+The data provided information on ~1k patients and 47.7k procedures at Massachusetts General Hospital from 2011-2022. Multiple tables in this dataset cover information like patient demographics, insurance coverage, and medical encounters and procedures.
+*/
+
+
+Questions I'm asking
+1. How many patients have been admitted between 2011 and 2022?
+2. How many patients were readmitted?
+3. How long on average are patients staying in the hospital?
+4. What is the average cost per visit?
+5. How many procedures are covered by insurance?
+6. Does the number of procedures and cost increase with the patient's age?
+7. What is the average number of visits per age?
+8. What is the average cost of a visit per age?
+
+
+SQL inquires
+#1
+
