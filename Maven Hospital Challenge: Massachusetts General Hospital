@@ -27,4 +27,19 @@ Questions I'm asking
 
 SQL inquires
 #1
+#2
+#3
+#4
+SELECT
+AVG(total_claim_cost)
+AS
+'Average Visit Cost'
 
+FROM
+hospital_encounters
+;
+
+#5
+#6
+#7
+#8
